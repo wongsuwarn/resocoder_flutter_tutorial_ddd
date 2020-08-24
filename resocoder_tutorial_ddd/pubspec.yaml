@@ -32,13 +32,13 @@ dependencies:
   dartz: ^0.9.1
   # for regular unions
   freezed_annotation: ^0.11.0+1
+  flutter_bloc: ^6.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   freezed: ^0.11.5
-  build_runner:
-
+  build_runner: null
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
