@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
+import 'package:resocoder_tutorial_ddd/injection.dart';
 
-/// added new line
-///
-///
-/// 123
-///
 void main() {
+  configureInjection(Environment.prod);
   runApp(MyApp());
 }
 

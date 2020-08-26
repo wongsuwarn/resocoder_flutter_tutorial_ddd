@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:resocoder_tutorial_ddd/domain/auth/auth_failure.dart';
@@ -15,6 +16,7 @@ part 'sign_in_form_bloc.freezed.dart';
 
 // sole purpose of bloc is to change state(s) based on events(s)
 // no validation - validation happens inside value object
+@injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
   final IAuthFacade _authFacade;
 
