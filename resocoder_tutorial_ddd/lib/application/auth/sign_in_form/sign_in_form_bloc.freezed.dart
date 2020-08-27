@@ -32,18 +32,13 @@ class _$SignInFormEventTearOff {
   }
 
 // ignore: unused_element
-  SignInWithEmailAndPasswordPressed signInWithEmailAndPasswordPressed(
-      String emailStr) {
-    return SignInWithEmailAndPasswordPressed(
-      emailStr,
-    );
+  SignInWithEmailAndPasswordPressed signInWithEmailAndPasswordPressed() {
+    return const SignInWithEmailAndPasswordPressed();
   }
 
 // ignore: unused_element
-  SignInWithGooglePressed signInWithGooglePressed(String emailStr) {
-    return SignInWithGooglePressed(
-      emailStr,
-    );
+  SignInWithGooglePressed signInWithGooglePressed() {
+    return const SignInWithGooglePressed();
   }
 }
 
@@ -56,16 +51,16 @@ mixin _$SignInFormEvent {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -169,8 +164,8 @@ class _$EmailChanged implements EmailChanged {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
@@ -186,8 +181,8 @@ class _$EmailChanged implements EmailChanged {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -306,8 +301,8 @@ class _$PasswordChanged implements PasswordChanged {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
@@ -323,8 +318,8 @@ class _$PasswordChanged implements PasswordChanged {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -426,8 +421,8 @@ class _$RegisterWithEmailAndPassWordPressed
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
@@ -443,8 +438,8 @@ class _$RegisterWithEmailAndPassWordPressed
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -505,7 +500,6 @@ abstract class $SignInWithEmailAndPasswordPressedCopyWith<$Res> {
           SignInWithEmailAndPasswordPressed value,
           $Res Function(SignInWithEmailAndPasswordPressed) then) =
       _$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
 }
 
 class _$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
@@ -519,47 +513,25 @@ class _$SignInWithEmailAndPasswordPressedCopyWithImpl<$Res>
   @override
   SignInWithEmailAndPasswordPressed get _value =>
       super._value as SignInWithEmailAndPasswordPressed;
-
-  @override
-  $Res call({
-    Object emailStr = freezed,
-  }) {
-    return _then(SignInWithEmailAndPasswordPressed(
-      emailStr == freezed ? _value.emailStr : emailStr as String,
-    ));
-  }
 }
 
 class _$SignInWithEmailAndPasswordPressed
     implements SignInWithEmailAndPasswordPressed {
-  const _$SignInWithEmailAndPasswordPressed(this.emailStr)
-      : assert(emailStr != null);
-
-  @override
-  final String emailStr;
+  const _$SignInWithEmailAndPasswordPressed();
 
   @override
   String toString() {
-    return 'SignInFormEvent.signInWithEmailAndPasswordPressed(emailStr: $emailStr)';
+    return 'SignInFormEvent.signInWithEmailAndPasswordPressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is SignInWithEmailAndPasswordPressed &&
-            (identical(other.emailStr, emailStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailStr, emailStr)));
+        (other is SignInWithEmailAndPasswordPressed);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailStr);
-
-  @override
-  $SignInWithEmailAndPasswordPressedCopyWith<SignInWithEmailAndPasswordPressed>
-      get copyWith => _$SignInWithEmailAndPasswordPressedCopyWithImpl<
-          SignInWithEmailAndPasswordPressed>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -567,15 +539,15 @@ class _$SignInWithEmailAndPasswordPressed
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithEmailAndPassWordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
-    return signInWithEmailAndPasswordPressed(emailStr);
+    return signInWithEmailAndPasswordPressed();
   }
 
   @override
@@ -584,13 +556,13 @@ class _$SignInWithEmailAndPasswordPressed
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (signInWithEmailAndPasswordPressed != null) {
-      return signInWithEmailAndPasswordPressed(emailStr);
+      return signInWithEmailAndPasswordPressed();
     }
     return orElse();
   }
@@ -637,19 +609,14 @@ class _$SignInWithEmailAndPasswordPressed
 }
 
 abstract class SignInWithEmailAndPasswordPressed implements SignInFormEvent {
-  const factory SignInWithEmailAndPasswordPressed(String emailStr) =
+  const factory SignInWithEmailAndPasswordPressed() =
       _$SignInWithEmailAndPasswordPressed;
-
-  String get emailStr;
-  $SignInWithEmailAndPasswordPressedCopyWith<SignInWithEmailAndPasswordPressed>
-      get copyWith;
 }
 
 abstract class $SignInWithGooglePressedCopyWith<$Res> {
   factory $SignInWithGooglePressedCopyWith(SignInWithGooglePressed value,
           $Res Function(SignInWithGooglePressed) then) =
       _$SignInWithGooglePressedCopyWithImpl<$Res>;
-  $Res call({String emailStr});
 }
 
 class _$SignInWithGooglePressedCopyWithImpl<$Res>
@@ -661,45 +628,23 @@ class _$SignInWithGooglePressedCopyWithImpl<$Res>
 
   @override
   SignInWithGooglePressed get _value => super._value as SignInWithGooglePressed;
-
-  @override
-  $Res call({
-    Object emailStr = freezed,
-  }) {
-    return _then(SignInWithGooglePressed(
-      emailStr == freezed ? _value.emailStr : emailStr as String,
-    ));
-  }
 }
 
 class _$SignInWithGooglePressed implements SignInWithGooglePressed {
-  const _$SignInWithGooglePressed(this.emailStr) : assert(emailStr != null);
-
-  @override
-  final String emailStr;
+  const _$SignInWithGooglePressed();
 
   @override
   String toString() {
-    return 'SignInFormEvent.signInWithGooglePressed(emailStr: $emailStr)';
+    return 'SignInFormEvent.signInWithGooglePressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is SignInWithGooglePressed &&
-            (identical(other.emailStr, emailStr) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailStr, emailStr)));
+    return identical(this, other) || (other is SignInWithGooglePressed);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(emailStr);
-
-  @override
-  $SignInWithGooglePressedCopyWith<SignInWithGooglePressed> get copyWith =>
-      _$SignInWithGooglePressedCopyWithImpl<SignInWithGooglePressed>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -707,15 +652,15 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result registerWithEmailAndPassWordPressed(),
-    @required Result signInWithEmailAndPasswordPressed(String emailStr),
-    @required Result signInWithGooglePressed(String emailStr),
+    @required Result signInWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(registerWithEmailAndPassWordPressed != null);
     assert(signInWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
-    return signInWithGooglePressed(emailStr);
+    return signInWithGooglePressed();
   }
 
   @override
@@ -724,13 +669,13 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result registerWithEmailAndPassWordPressed(),
-    Result signInWithEmailAndPasswordPressed(String emailStr),
-    Result signInWithGooglePressed(String emailStr),
+    Result signInWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (signInWithGooglePressed != null) {
-      return signInWithGooglePressed(emailStr);
+      return signInWithGooglePressed();
     }
     return orElse();
   }
@@ -777,11 +722,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
 }
 
 abstract class SignInWithGooglePressed implements SignInFormEvent {
-  const factory SignInWithGooglePressed(String emailStr) =
-      _$SignInWithGooglePressed;
-
-  String get emailStr;
-  $SignInWithGooglePressedCopyWith<SignInWithGooglePressed> get copyWith;
+  const factory SignInWithGooglePressed() = _$SignInWithGooglePressed;
 }
 
 class _$SignInFormStateTearOff {
