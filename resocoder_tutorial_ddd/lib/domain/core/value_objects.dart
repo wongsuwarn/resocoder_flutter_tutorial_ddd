@@ -2,7 +2,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:resocoder_tutorial_ddd/domain/core/errors.dart';
 import 'package:resocoder_tutorial_ddd/domain/core/failures.dart';
+import 'package:uuid/uuid.dart';
 
+/// This is the VVO superclass with all the common boilerplate
+/// relying heavily on generics
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
@@ -13,6 +16,7 @@ abstract class ValueObject<T> {
     return value.fold((l) => throw UnexpectedValueError(l), id);
   }
 
+  // more expressive code
   bool isValid() => value.isRight();
 
   @override
@@ -26,4 +30,23 @@ abstract class ValueObject<T> {
 
   @override
   String toString() => 'Value($value)';
+}
+
+class UniqueId extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+  factory UniqueId() {
+    return UniqueId._(
+      right(Uuid().v1()),
+    );
+  }
+
+  // for this factory constructor we have to trust that the string is unique
+  factory UniqueId.fromUniqueString(String uniqueId) {
+    assert(uniqueId != null);
+    return UniqueId._(
+      right(uniqueId),
+    );
+  }
+  const UniqueId._(this.value);
 }
