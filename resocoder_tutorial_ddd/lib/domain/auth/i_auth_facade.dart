@@ -8,6 +8,11 @@ import 'value_objects.dart';
 /// by the application layer. Instead the application layer will
 /// depend on this abstract class in the domain layer.
 ///
+/// Interfaces define contracts which should be fulfilled
+/// regardless of what the 3rd party implementation solution is
+///
+/// The implementation FirebaseAuthFacade will literally implement
+/// this interface
 abstract class IAuthFacade {
   /// the use of the Unit type from dartz is to avoid nulls
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({

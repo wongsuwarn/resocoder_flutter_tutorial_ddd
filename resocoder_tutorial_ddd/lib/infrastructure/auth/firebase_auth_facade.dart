@@ -16,17 +16,27 @@ class FirebaseAuthFacade implements IAuthFacade {
   FirebaseAuthFacade(this._firebaseAuth, this._googleSignIn);
 
   @override
+
+  /// the email address and password will have to be valid
+  /// by this point because of the bloc
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
   }) async {
+    // String extraction
+    // app will crash if there is something invalid held in the
+    // emailAddress or password fields (since that should be
+    // impossible at this point)
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     try {
+      // firebase auth method expects string
+      // It returns a Future containing UserCredential
       await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddressStr.toString(),
         password: passwordStr,
       );
+      // the unit signals that nothing wrong happened
       return right(unit);
     } on PlatformException catch (e) {
       if (e.code == 'email-already-in-use') {
@@ -51,6 +61,8 @@ class FirebaseAuthFacade implements IAuthFacade {
       );
       return right(unit);
     } on PlatformException catch (e) {
+      // do not distinguish between the two so that a malicious
+      // hacker is not able to know when an email is found
       if (e.code == 'wrong-password' || e.code == 'user-not-found') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       } else {
@@ -68,6 +80,8 @@ class FirebaseAuthFacade implements IAuthFacade {
       }
       final googleAuthentication = await googleUser.authentication;
 
+      // firebase only understands the credential within
+      // the authentication object
       final authCredential = GoogleAuthProvider.credential(
         idToken: googleAuthentication.idToken,
         accessToken: googleAuthentication.accessToken,

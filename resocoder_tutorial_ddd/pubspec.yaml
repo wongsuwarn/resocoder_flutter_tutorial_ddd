@@ -31,13 +31,13 @@ dependencies:
   # for either type
   dartz: ^0.9.1
   # for regular unions
-  freezed_annotation: ^0.11.0+1
-  flutter_bloc: ^6.0.1
+  freezed_annotation: ^0.12.0
+  flutter_bloc: ^6.0.5
   firebase_core: ^0.5.0
   firebase_auth: ^0.18.0+1
-  google_sign_in: ^4.5.3
+  google_sign_in: ^4.5.4
   injectable: ^1.0.4
-  get_it: ^4.0.4
+  get_it: ^4.0.1
   flushbar: ^1.10.4
   uuid: ^2.2.2
 
