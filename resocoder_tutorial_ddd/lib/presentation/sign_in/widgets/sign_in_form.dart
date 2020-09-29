@@ -38,6 +38,7 @@ class SignInForm extends StatelessWidget {
           // uses BLoC to validate on any change
           autovalidate: state.showErrorMessages,
           child: ListView(
+            padding: const EdgeInsets.all(8),
             children: [
               const Text(
                 '📝',
@@ -45,61 +46,55 @@ class SignInForm extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                  ),
-                  autocorrect: false,
-                  // use onChanged callback to get new values over
-                  // to bloc
-                  onChanged: (value) => context.bloc<SignInFormBloc>().add(
-                        SignInFormEvent.emailChanged(value),
-                      ),
-                  validator: (_) => context
-                      // takes the state from the bloc not the
-                      // builder (because the validator would be
-                      // a step behind onChanged)
-                      .bloc<SignInFormBloc>()
-                      .state
-                      .emailAddress
-                      .value
-                      .fold(
-                        // left side means failure
-                        // maybeMap means orElse can be used for
-                        // all failures not listed
-                        (f) => f.maybeMap(
-                          invalidEmail: (_) => 'Invalid Email',
-                          orElse: () => null,
-                        ),
-                        (_) => null,
-                      ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
                 ),
+                autocorrect: false,
+                // use onChanged callback to get new values over
+                // to bloc
+                onChanged: (value) => context.bloc<SignInFormBloc>().add(
+                      SignInFormEvent.emailChanged(value),
+                    ),
+                validator: (_) => context
+                    // takes the state from the bloc not the
+                    // builder (because the validator would be
+                    // a step behind onChanged)
+                    .bloc<SignInFormBloc>()
+                    .state
+                    .emailAddress
+                    .value
+                    .fold(
+                      // left side means failure
+                      // maybeMap means orElse can be used for
+                      // all failures not listed
+                      (f) => f.maybeMap(
+                        invalidEmail: (_) => 'Invalid Email',
+                        orElse: () => null,
+                      ),
+                      (_) => null,
+                    ),
               ),
               const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
-                    labelText: 'Password',
-                  ),
-                  autocorrect: false,
-                  obscureText: true,
-                  onChanged: (value) => context.bloc<SignInFormBloc>().add(
-                        SignInFormEvent.passwordChanged(value),
-                      ),
-                  validator: (_) =>
-                      context.bloc<SignInFormBloc>().state.password.value.fold(
-                            (f) => f.maybeMap(
-                              shortPassword: (_) => 'Short Password',
-                              orElse: () => null,
-                            ),
-                            (_) => null,
-                          ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.lock),
+                  labelText: 'Password',
                 ),
+                autocorrect: false,
+                obscureText: true,
+                onChanged: (value) => context.bloc<SignInFormBloc>().add(
+                      SignInFormEvent.passwordChanged(value),
+                    ),
+                validator: (_) =>
+                    context.bloc<SignInFormBloc>().state.password.value.fold(
+                          (f) => f.maybeMap(
+                            shortPassword: (_) => 'Short Password',
+                            orElse: () => null,
+                          ),
+                          (_) => null,
+                        ),
               ),
               const SizedBox(height: 8),
               Row(
@@ -124,24 +119,25 @@ class SignInForm extends StatelessWidget {
                   )
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: RaisedButton(
-                  onPressed: () {
-                    context
-                        .bloc<SignInFormBloc>()
-                        .add(const SignInFormEvent.signInWithGooglePressed());
-                  },
-                  color: Colors.lightBlue,
-                  child: const Text(
-                    'SIGN IN WITH GOOGLE',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+              RaisedButton(
+                onPressed: () {
+                  context
+                      .bloc<SignInFormBloc>()
+                      .add(const SignInFormEvent.signInWithGooglePressed());
+                },
+                color: Colors.lightBlue,
+                child: const Text(
+                  'SIGN IN WITH GOOGLE',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
+              if (state.isSubmitting) ...[
+                const SizedBox(height: 8),
+                const LinearProgressIndicator(),
+              ]
             ],
           ),
         );

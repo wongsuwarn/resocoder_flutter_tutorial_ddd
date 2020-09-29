@@ -16,8 +16,9 @@ part 'sign_in_form_state.dart';
 part 'sign_in_form_bloc.freezed.dart';
 
 // sole purpose of bloc is to change state(s) based on events(s)
-/// It glues the presentation layer together with the other layers
-/// in the app
+// on the sign in page e.g. button clicks
+// It glues the presentation layer together with the other layers
+// in the app
 // no validation - validation happens inside value object
 @injectable
 class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
