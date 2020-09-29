@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:resocoder_tutorial_ddd/domain/auth/auth_failure.dart';
+import 'package:resocoder_tutorial_ddd/domain/auth/user.dart';
 import 'value_objects.dart';
 
 /// This interface means that implementation detail in the
@@ -14,7 +15,10 @@ import 'value_objects.dart';
 /// The implementation FirebaseAuthFacade will literally implement
 /// this interface
 abstract class IAuthFacade {
-  /// the use of the Unit type from dartz is to avoid nulls
+  // Option is non-nullable type that holds none or some
+  Future<Option<CurrentUser>> getSignedInUser();
+
+  // the use of the Unit type from dartz is to avoid nulls
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
@@ -24,4 +28,5 @@ abstract class IAuthFacade {
     @required Password password,
   });
   Future<Either<AuthFailure, Unit>> signInWithGoogle();
+  Future<void> signOut();
 }
