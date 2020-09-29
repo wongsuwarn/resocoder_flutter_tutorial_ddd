@@ -7,6 +7,7 @@ import 'package:resocoder_tutorial_ddd/presentation/core/app_widget.dart.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  // injectable
   configureInjection(Environment.prod);
   runApp(AppWidget());
 }

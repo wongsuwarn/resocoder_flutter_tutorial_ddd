@@ -10,11 +10,11 @@ class AppWidget extends StatelessWidget {
       title: 'Notes',
       home: SignInPage(),
       theme: ThemeData.light().copyWith(
-        primaryColor: Colors.green,
+        primaryColor: Colors.green[800],
         accentColor: Colors.blueAccent,
         inputDecorationTheme: InputDecorationTheme(
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
+            borderRadius: BorderRadius.circular(4),
           ),
         ),
       ),

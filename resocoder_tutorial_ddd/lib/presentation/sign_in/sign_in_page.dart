@@ -12,6 +12,9 @@ class SignInPage extends StatelessWidget {
         title: const Text('Sign In'),
       ),
       body: BlocProvider(
+        // get it will get the instance of sign in bloc
+        // we do not instantiate it here (hence do not need
+        // to pass an IAuthFacade object)
         create: (context) => getIt<SignInFormBloc>(),
         child: SignInForm(),
       ),
